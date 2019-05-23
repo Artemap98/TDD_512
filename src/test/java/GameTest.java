@@ -4,6 +4,13 @@ import org.junit.Test;
 
 public class GameTest {
 
+    int[][] TEST_MATRIX = {
+            {0,2,0,16},
+            {0,2,0,64},
+            {0,0,4,0},
+            {32,0,0,0}
+    };
+
     @Test
     public void MainClassCreationTest() {
         Game game = new Game();
@@ -34,12 +41,7 @@ public class GameTest {
     public void RandomEmptyCellFillTest()
     {
         Game game = new Game();
-        int[][] matrix = {
-                {0,2,0,16},
-                {0,2,0,64},
-                {0,0,4,0},
-                {32,0,0,0}
-        };
+        int[][] matrix = TEST_MATRIX;
         int[][] matrix2 = CopyMatrix(matrix);
         game.RandomEmptyCellFill(matrix2);
         int nonEqualCells = 0;
@@ -62,5 +64,26 @@ public class GameTest {
         }
         return matrix2;
     }
+
+    @Test
+    public void MoveLeftTest()
+    {
+        Game myGame = new Game();
+        int[][] matrix = TEST_MATRIX;
+        matrix = myGame.MoveLeft(matrix);
+        for (int i=0; i<matrix.length; i++)
+        {
+            boolean nullCounter = false;
+            boolean properlyMoved = true;
+            for (int j=0; j< matrix.length; j++)
+            {
+                //if number placed righter than empty cell, then error
+                if(matrix[i][j]==0) nullCounter = true;
+                else if(nullCounter==true) properlyMoved = false;
+            }
+            Assert.assertTrue(properlyMoved);
+        }
+    }
+
 };
 
