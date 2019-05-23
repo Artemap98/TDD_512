@@ -1,5 +1,6 @@
 package test.java;
 
+import main.java.Cell;
 import org.junit.Assert;
 import org.junit.Test;
 
