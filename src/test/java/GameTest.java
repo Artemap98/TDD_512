@@ -11,9 +11,10 @@ public class GameTest {
     }
 
     @Test
-    void MatrixCreationTest()
+    void CreateMatrixTest()
     {
-
+        Game game = new Game();
+        Assert.assertNotNull(game.CreateMatrix());
     }
 
 
