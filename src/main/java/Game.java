@@ -39,6 +39,7 @@ public class Game {
 
     public int[][] MoveLeft(int[][] matrix)
     {
+        boolean moveExecuted = false;
         for (int i=0; i<matrix.length; i++)
         {
             boolean nullCounter = false;
@@ -51,9 +52,30 @@ public class Game {
                     matrix[i][j] = 0;
                     j=-1;
                     nullCounter = false;
+                    moveExecuted = true;
                 }
             }
         }
+        if(moveExecuted) matrix = MergeLeft(matrix);
+        return matrix;
+    }
+
+    public int[][] MergeLeft(int[][] matrix)
+    {
+        boolean mergeExecuted = false;
+        for (int i=0; i<matrix.length; i++)
+        {
+            for (int j=1; j< matrix.length; j++)
+            {
+                if(matrix[i][j]==matrix[i][j-1] && matrix[i][j]!=0){
+                    matrix[i][j-1] += matrix[i][j];
+                    matrix[i][j] = 0;
+                    j=0;
+                    mergeExecuted = true;
+                }
+            }
+        }
+        if(mergeExecuted) matrix = MoveLeft(matrix);
         return matrix;
     }
 }

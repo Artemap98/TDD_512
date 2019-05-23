@@ -6,6 +6,13 @@ public class GameTest {
 
     int[][] TEST_MATRIX = {
             {0,2,0,16},
+            {0,2,2,64},
+            {0,0,4,4},
+            {32,32,64,128}
+    };
+
+    int[][] TEST_MATRIX2 = {
+            {0,2,0,16},
             {0,2,0,64},
             {0,0,4,0},
             {32,0,0,0}
@@ -96,7 +103,7 @@ public class GameTest {
             boolean properlyMerged = true;
             for (int j=1; j< matrix.length; j++)
             {
-                if(matrix[i][j]==matrix[i][j-1]) properlyMerged = false;
+                if(matrix[i][j]==matrix[i][j-1] && matrix[i][j]!=0) properlyMerged = false;
             }
             Assert.assertTrue(properlyMerged);
         }
