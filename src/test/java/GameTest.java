@@ -148,6 +148,7 @@ public class GameTest {
         }
     }
 
+
     @Test
     public void MoveUpTest()
     {
@@ -223,6 +224,7 @@ public class GameTest {
             Assert.assertTrue(properlyMerged);
         }
     }
+
 
 };
 
