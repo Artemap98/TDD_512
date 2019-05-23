@@ -85,5 +85,22 @@ public class GameTest {
         }
     }
 
+    @Test
+    public void MergeLeftTest()
+    {
+        Game myGame = new Game();
+        int[][] matrix = TEST_MATRIX;
+        matrix = myGame.MergeLeft(matrix);
+        for (int i=0; i<matrix.length; i++)
+        {
+            boolean properlyMerged = true;
+            for (int j=1; j< matrix.length; j++)
+            {
+                if(matrix[i][j]==matrix[i][j-1]) properlyMerged = false;
+            }
+            Assert.assertTrue(properlyMerged);
+        }
+    }
+
 };
 
