@@ -30,7 +30,26 @@ public class GameTest {
 
     }
 
-
+    @Test
+    public void RandomEmptyCellFillTest()
+    {
+        Game game = new Game();
+        int[][] matrix = {
+                {0,2,0,16},
+                {0,2,0,64},
+                {0,0,4,0},
+                {32,0,0,0}
+        };
+        int[][] matrix2 = game.RandomEmptyCellFill();
+        int nonEqualCells = 0;
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                if(matrix[i][j] != matrix2[i][j])
+                    nonEqualCells++;
+            }
+        }
+        Assert.assertEquals(1,nonEqualCells);
+    }
 
 };
 
