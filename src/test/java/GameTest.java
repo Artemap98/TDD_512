@@ -40,7 +40,8 @@ public class GameTest {
                 {0,0,4,0},
                 {32,0,0,0}
         };
-        int[][] matrix2 = game.RandomEmptyCellFill();
+        int[][] matrix2 = CopyMatrix(matrix);
+        game.RandomEmptyCellFill(matrix2);
         int nonEqualCells = 0;
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
@@ -51,5 +52,15 @@ public class GameTest {
         Assert.assertEquals(1,nonEqualCells);
     }
 
+    public int[][] CopyMatrix(int[][] matrix1)
+    {
+        int[][] matrix2 = new int[matrix1.length][matrix1.length];
+        for (int i = 0; i < matrix1.length; i++) {
+            for (int j = 0; j < matrix1[i].length; j++) {
+                matrix2[i][j] = matrix1[i][j];
+            }
+        }
+        return matrix2;
+    }
 };
 
