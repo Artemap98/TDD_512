@@ -27,7 +27,7 @@ public class GameTest {
             for (int j = 0; j < matrix[i].length; j++)
                 Assert.assertEquals(0,matrix[i][j]);
         }
-        
+
     }
 
 
