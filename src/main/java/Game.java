@@ -36,4 +36,24 @@ public class Game {
 
         return matrix;
     }
+
+    public int[][] MoveLeft(int[][] matrix)
+    {
+        for (int i=0; i<matrix.length; i++)
+        {
+            boolean nullCounter = false;
+            for (int j=0; j< matrix.length; j++)
+            {
+                //if number placed righter than empty cell, then move it to left
+                if(matrix[i][j]==0) nullCounter = true;
+                else if(nullCounter==true && matrix[i][j]!=0) {
+                    matrix[i][j-1] = matrix[i][j];
+                    matrix[i][j] = 0;
+                    j=-1;
+                    nullCounter = false;
+                }
+            }
+        }
+        return matrix;
+    }
 }
