@@ -109,5 +109,120 @@ public class GameTest {
         }
     }
 
+    @Test
+    public void MoveRightTest()
+    {
+        Game myGame = new Game();
+        int[][] matrix = TEST_MATRIX;
+        matrix = myGame.MoveRight(matrix);
+        int mlen = matrix.length-1;
+        for (int i=0; i<matrix.length; i++)
+        {
+            boolean nullCounter = false;
+            boolean properlyMoved = true;
+            for (int j=0; j< matrix.length; j++)
+            {
+                //if number placed lefter than empty cell, then error
+                if(matrix[i][mlen-j]==0) nullCounter = true;
+                else if(nullCounter==true) properlyMoved = false;
+            }
+            Assert.assertTrue(properlyMoved);
+        }
+    }
+
+    @Test
+    public void MergeRightTest()
+    {
+        Game myGame = new Game();
+        int[][] matrix = TEST_MATRIX;
+        matrix = myGame.MergeRight(matrix);
+        int mlen = matrix.length-1;
+        for (int i=0; i<matrix.length; i++)
+        {
+            boolean properlyMerged = true;
+            for (int j=1; j< matrix.length; j++)
+            {
+                if(matrix[i][mlen-j]==matrix[i][mlen-(j-1)] && matrix[i][mlen-j]!=0) properlyMerged = false;
+            }
+            Assert.assertTrue(properlyMerged);
+        }
+    }
+
+    @Test
+    public void MoveUpTest()
+    {
+        Game myGame = new Game();
+        int[][] matrix = TEST_MATRIX;
+        matrix = myGame.MoveUp(matrix);
+        for (int i=0; i<matrix.length; i++)
+        {
+            boolean nullCounter = false;
+            boolean properlyMoved = true;
+            for (int j=0; j< matrix.length; j++)
+            {
+                //if number placed lower than empty cell, then error
+                if(matrix[j][i]==0) nullCounter = true;
+                else if(nullCounter==true) properlyMoved = false;
+            }
+            Assert.assertTrue(properlyMoved);
+        }
+    }
+
+    @Test
+    public void MergeUpTest()
+    {
+        Game myGame = new Game();
+        int[][] matrix = TEST_MATRIX;
+        matrix = myGame.MergeUp(matrix);
+        for (int i=0; i<matrix.length; i++)
+        {
+            boolean properlyMerged = true;
+            for (int j=1; j< matrix.length; j++)
+            {
+                if(matrix[j][i]==matrix[j-1][i] && matrix[j][i]!=0) properlyMerged = false;
+            }
+            Assert.assertTrue(properlyMerged);
+        }
+    }
+
+    @Test
+    public void MoveDownTest()
+    {
+        Game myGame = new Game();
+        int[][] matrix = TEST_MATRIX;
+        int mlen = matrix.length-1;
+        matrix = myGame.MoveDown(matrix);
+        for (int i=0; i<matrix.length; i++)
+        {
+            boolean nullCounter = false;
+            boolean properlyMoved = true;
+            for (int j=0; j< matrix.length; j++)
+            {
+                //if number placed lower than empty cell, then error
+                if(matrix[mlen-j][i]==0) nullCounter = true;
+                else if(nullCounter==true) properlyMoved = false;
+            }
+            Assert.assertTrue(properlyMoved);
+        }
+    }
+
+    @Test
+    public void MergeDownTest()
+    {
+        Game myGame = new Game();
+        int[][] matrix = TEST_MATRIX;
+        matrix = myGame.MergeDown(matrix);
+        int mlen = matrix.length-1;
+        for (int i=0; i<matrix.length; i++)
+        {
+            boolean properlyMerged = true;
+            for (int j=1; j< matrix.length; j++)
+            {
+                if(matrix[mlen-j][i]==matrix[mlen-(j-1)][i] && matrix[mlen-j][i]!=0) properlyMerged = false;
+            }
+            Assert.assertTrue(properlyMerged);
+        }
+    }
+
 };
 
