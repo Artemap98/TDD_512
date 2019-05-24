@@ -166,7 +166,7 @@ public class Game {
     }
 
 
-    public int[][] MoveRight(int[][] matrix)
+    public int[][] MoveDown(int[][] matrix)
     {
         boolean moveExecuted = false;
         int mlen = matrix.length-1;
@@ -175,21 +175,21 @@ public class Game {
             boolean nullCounter = false;
             for (int j=0; j< matrix.length; j++)
             {
-                if(matrix[i][mlen-j]==0) nullCounter = true;
-                else if(nullCounter==true && matrix[i][mlen-j]!=0) {
-                    matrix[i][mlen-(j-1)] = matrix[i][mlen-j];
-                    matrix[i][mlen-j] = 0;
+                if(matrix[mlen-j][i]==0) nullCounter = true;
+                else if(nullCounter==true && matrix[mlen-j][i]!=0) {
+                    matrix[mlen-(j-1)][i] = matrix[mlen-j][i];
+                    matrix[mlen-j][i] = 0;
                     j=-1;
                     nullCounter = false;
                     moveExecuted = true;
                 }
             }
         }
-        if(moveExecuted) matrix = MergeRight(matrix);
+        if(moveExecuted) matrix = MergeDown(matrix);
         return matrix;
     }
 
-    public int[][] MergeRight(int[][] matrix)
+    public int[][] MergeDown(int[][] matrix)
     {
         boolean mergeExecuted = false;
         int mlen = matrix.length-1;
@@ -197,15 +197,15 @@ public class Game {
         {
             for (int j=1; j< matrix.length; j++)
             {
-                if(matrix[i][mlen-j]==matrix[i][mlen-(j-1)] && matrix[i][mlen-j]!=0){
-                    matrix[i][mlen-(j-1)] += matrix[i][mlen-j];
-                    matrix[i][mlen-j] = 0;
+                if(matrix[mlen-j][i]==matrix[mlen-(j-1)][i] && matrix[mlen-j][i]!=0){
+                    matrix[mlen-(j-1)][i] += matrix[mlen-j][i];
+                    matrix[mlen-j][i] = 0;
                     j=0;
                     mergeExecuted = true;
                 }
             }
         }
-        if(mergeExecuted) matrix = MoveRight(matrix);
+        if(mergeExecuted) matrix = MoveDown(matrix);
         return matrix;
     }
 
