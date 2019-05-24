@@ -186,6 +186,7 @@ public class GameTest {
         }
     }
 
+
     @Test
     public void MoveDownTest()
     {
@@ -224,6 +225,7 @@ public class GameTest {
             Assert.assertTrue(properlyMerged);
         }
     }
+
 
 
 };

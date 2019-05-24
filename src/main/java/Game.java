@@ -121,4 +121,94 @@ public class Game {
         if(mergeExecuted) matrix = MoveRight(matrix);
         return matrix;
     }
+    //////////////////////////////////////////////////////////////////////////////////////
+
+    public int[][] MoveUp(int[][] matrix)
+    {
+        boolean moveExecuted = false;
+        for (int i=0; i<matrix.length; i++)
+        {
+            boolean nullCounter = false;
+            for (int j=0; j< matrix.length; j++)
+            {
+                //if number placed righter than empty cell, then move it to left
+                if(matrix[j][i]==0) nullCounter = true;
+                else if(nullCounter==true && matrix[j][i]!=0) {
+                    matrix[j-1][i] = matrix[j][i];
+                    matrix[j][i] = 0;
+                    j=-1;
+                    nullCounter = false;
+                    moveExecuted = true;
+                }
+            }
+        }
+        if(moveExecuted) matrix = MergeUp(matrix);
+        return matrix;
+    }
+
+    public int[][] MergeUp(int[][] matrix)
+    {
+        boolean mergeExecuted = false;
+        for (int i=0; i<matrix.length; i++)
+        {
+            for (int j=1; j< matrix.length; j++)
+            {
+                if(matrix[j][i]==matrix[j-1][i] && matrix[j][i]!=0){
+                    matrix[j-1][i] += matrix[j][i];
+                    matrix[j][i] = 0;
+                    j=0;
+                    mergeExecuted = true;
+                }
+            }
+        }
+        if(mergeExecuted) matrix = MoveUp(matrix);
+        return matrix;
+    }
+
+
+    public int[][] MoveRight(int[][] matrix)
+    {
+        boolean moveExecuted = false;
+        int mlen = matrix.length-1;
+        for (int i=0; i<matrix.length; i++)
+        {
+            boolean nullCounter = false;
+            for (int j=0; j< matrix.length; j++)
+            {
+                if(matrix[i][mlen-j]==0) nullCounter = true;
+                else if(nullCounter==true && matrix[i][mlen-j]!=0) {
+                    matrix[i][mlen-(j-1)] = matrix[i][mlen-j];
+                    matrix[i][mlen-j] = 0;
+                    j=-1;
+                    nullCounter = false;
+                    moveExecuted = true;
+                }
+            }
+        }
+        if(moveExecuted) matrix = MergeRight(matrix);
+        return matrix;
+    }
+
+    public int[][] MergeRight(int[][] matrix)
+    {
+        boolean mergeExecuted = false;
+        int mlen = matrix.length-1;
+        for (int i=0; i<matrix.length; i++)
+        {
+            for (int j=1; j< matrix.length; j++)
+            {
+                if(matrix[i][mlen-j]==matrix[i][mlen-(j-1)] && matrix[i][mlen-j]!=0){
+                    matrix[i][mlen-(j-1)] += matrix[i][mlen-j];
+                    matrix[i][mlen-j] = 0;
+                    j=0;
+                    mergeExecuted = true;
+                }
+            }
+        }
+        if(mergeExecuted) matrix = MoveRight(matrix);
+        return matrix;
+    }
+
+
+
 }
