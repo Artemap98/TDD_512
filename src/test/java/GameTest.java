@@ -5,6 +5,13 @@ import org.junit.Test;
 public class GameTest {
 
     int[][] TEST_MATRIX = {
+            {0,0,0,0},
+            {0,0,0,0},
+            {0,0,0,0},
+            {0,0,0,0}
+    };
+
+    int[][] TEST_MATRIX1= {
             {0,2,0,16},
             {0,2,2,64},
             {0,0,4,4},
